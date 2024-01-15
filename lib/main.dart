@@ -20,11 +20,11 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   List<CartItem> cartItems = [
-    CartItem(name: 'Item 1', unitPrice: 10.0),
-    CartItem(name: 'Item 2', unitPrice: 15.0),
-    CartItem(name: 'Item 3', unitPrice: 20.0),
-    CartItem(name: 'Item 4', unitPrice: 25.0),
-    CartItem(name: 'Item 5', unitPrice: 30.0),
+    CartItem(name: 'Item 1', unitPrice: 51.0),
+    CartItem(name: 'Item 2', unitPrice: 30.0),
+    CartItem(name: 'Item 3', unitPrice: 43.0),
+    //CartItem(name: 'Item 4', unitPrice: 25.0),
+    //CartItem(name: 'Item 5', unitPrice: 30.0),
   ];
 
   @override
@@ -60,7 +60,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 },
               ),
             SizedBox(height: 20),
-            Text('Total Amount: \$${calculateTotalAmount().toStringAsFixed(2)}'),
+            Text('Total Amount: ${calculateTotalAmount().toStringAsFixed(2)}\$'),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -97,8 +97,14 @@ class _ShoppingCartState extends State<ShoppingCart> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Items Added to Bag'),
-          content: Text('You have added a total of 5 items to your bag!'),
+          title: Text('Congratulations!'),
+          content: Column(
+            children: [
+              Text('You have added'),
+              Text('5'),
+              Text('T-shirt on your bag!'),
+            ],
+          ),
           actions: [
             TextButton(
               onPressed: () {
