@@ -20,11 +20,11 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   List<CartItem> cartItems = [
-    CartItem(name: 'Pullover', unitPrice: 51.0),
-    CartItem(name: 'T-Shirt', unitPrice: 30.0),
-    CartItem(name: 'Sport Dress', unitPrice: 43.0),
-    CartItem(name: 'Shirt', unitPrice: 25.0),
-    CartItem(name: 'Pant', unitPrice: 30.0),
+    CartItem(name: 'Pullover', color: 'Black', size: 'L' , unitPrice: 51.0),
+    CartItem(name: 'T-Shirt', color: 'Gray', size: 'M' , unitPrice: 30.0),
+    CartItem(name: 'Sport Dress', color: 'Black', size: 'L' , unitPrice: 43.0),
+    CartItem(name: 'Shirt', color: 'Blue', size: 'M' , unitPrice: 25.0),
+    CartItem(name: 'Pant', color: 'Black', size: '30' , unitPrice: 30.0),
   ];
 
   @override
@@ -131,9 +131,11 @@ class _ShoppingCartState extends State<ShoppingCart> {
 class CartItem {
   final String name;
   final double unitPrice;
+  final String color;
+  final String size;
   int quantity;
 
-  CartItem({required this.name, required this.unitPrice, this.quantity = 0});
+  CartItem({required this.name, required this.unitPrice, this.quantity = 0, required this.color, required this.size});
 }
 
 class CartItemWidget extends StatelessWidget {
@@ -154,11 +156,14 @@ class CartItemWidget extends StatelessWidget {
         Row(
           children: [
             Text('${item.name}'),
+            Icon(Icons.more_vert),
           ],
         ),
         Row(
           children: [
-            Text('Color :'),
+            Text('Color : ${item.color}'),
+            SizedBox(width: 20,),
+            Text('Size : ${item.size}')
           ],
         ),
         Row(
@@ -173,7 +178,7 @@ class CartItemWidget extends StatelessWidget {
               icon: Icon(Icons.add),
               onPressed: onAdd,
             ),
-            Text('${item.unitPrice}')
+            Text('${item.unitPrice}\$')
           ],
         ),
       ],
