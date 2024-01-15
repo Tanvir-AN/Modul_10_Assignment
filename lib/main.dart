@@ -20,11 +20,11 @@ class ShoppingCart extends StatefulWidget {
 
 class _ShoppingCartState extends State<ShoppingCart> {
   List<CartItem> cartItems = [
-    CartItem(name: 'Item 1', unitPrice: 51.0),
-    CartItem(name: 'Item 2', unitPrice: 30.0),
-    CartItem(name: 'Item 3', unitPrice: 43.0),
-    //CartItem(name: 'Item 4', unitPrice: 25.0),
-    //CartItem(name: 'Item 5', unitPrice: 30.0),
+    CartItem(name: 'Pullover', unitPrice: 51.0),
+    CartItem(name: 'T-Shirt', unitPrice: 30.0),
+    CartItem(name: 'Sport Dress', unitPrice: 43.0),
+    CartItem(name: 'Shirt', unitPrice: 25.0),
+    CartItem(name: 'Pant', unitPrice: 30.0),
   ];
 
   @override
@@ -40,6 +40,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Text('My Bag',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 34),),
             for (var item in cartItems)
               CartItemWidget(
                 item: item,
@@ -148,17 +149,32 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
       children: [
-        IconButton(
-          icon: Icon(Icons.remove),
-          onPressed: onRemove,
+        Row(
+          children: [
+            Text('${item.name}'),
+          ],
         ),
-        Text('${item.name} (${item.quantity}x)'),
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: onAdd,
+        Row(
+          children: [
+            Text('Color :'),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              icon: Icon(Icons.remove),
+              onPressed: onRemove,
+            ),
+            Text('${item.quantity}'),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: onAdd,
+            ),
+            Text('${item.unitPrice}')
+          ],
         ),
       ],
     );
