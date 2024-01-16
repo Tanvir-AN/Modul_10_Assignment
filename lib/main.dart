@@ -61,7 +61,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
                 },
               ),
             SizedBox(height: 20),
-            Text('Total Amount: ${calculateTotalAmount().toStringAsFixed(2)}\$'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Total Amount:'),
+                Text('${calculateTotalAmount().toStringAsFixed(2)}\$')
+              ],
+            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -151,37 +157,40 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text('${item.name}'),
-            Icon(Icons.more_vert),
-          ],
-        ),
-        Row(
-          children: [
-            Text('Color : ${item.color}'),
-            SizedBox(width: 20,),
-            Text('Size : ${item.size}')
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.remove),
-              onPressed: onRemove,
-            ),
-            Text('${item.quantity}'),
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: onAdd,
-            ),
-            Text('${item.unitPrice}\$')
-          ],
-        ),
-      ],
+    return Card(
+      child:Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('${item.name}',),
+              Icon(Icons.more_vert),
+            ],
+          ),
+          Row(
+            children: [
+              Text('Color : ${item.color}'),
+              SizedBox(width: 20,),
+              Text('Size : ${item.size}')
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(Icons.remove),
+                onPressed: onRemove,
+              ),
+              Text('${item.quantity}'),
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: onAdd,
+              ),
+              Text('${item.unitPrice}\$')
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
